@@ -223,6 +223,14 @@ Use Babel alongside TypeScript(required for modern mode,auto-detected polyfills,
 
 
 
+**特别强调：**
+
+**所谓 Vue 2.x 中支持 TypeScript 是指我们可以在 Vue 项目中创建和使用 .ts 文件，但不意味着我们可以在 .vue 文件中使用 TypeScript。**
+
+> 对于 .vue 文件而言，之前该怎么写，现在还怎么写。
+
+
+
 <br>
 
 **关于 eslint 的补充说明：**
