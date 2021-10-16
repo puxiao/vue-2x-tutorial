@@ -126,7 +126,106 @@ vue create my-project
 
 <br>
 
-**补充说明：**
+**关于安装 CSS Pre-processors 的补充说明：**
+
+如果你需要安装 Sass、Less、Stylus 这样的 CSS 预处理器，那么在使用 Vue CLI 创建项目时，就手工勾选此项。
+
+如果你选择的是 Sass，那么还会询问你安装哪一种？
+
+1. dart-sass：使用 drat VM 来编译 sass，包含 Sass 更多新特性，甚至可以把 css 编译成纯 JS
+
+   > 相对而言，dart-sass 比 node-sass 整体编译略微慢一些，但是可以忽略的那种慢。
+
+2. node-sass：使用 node 来编译 sass
+
+   > 对于 windows 用户而言，需要系统安装 python2+ 和 VSCode 才可以正常安装 node-sass
+
+目前 Sass 官方推荐使用 dart-sass，但是我之前习惯使用 node-sass。
+
+实际上无论选择哪个，在编写 .sass 文件时是没有区别的。
+
+
+
+<br>
+
+**关于安装 TypeScript 的补充说明：**
+
+如果项目安装时选择安装 TypeScript，那么在安装过程中会询问你：
+
+Use class-style component syntax?(Y/n)
+
+这句话的意思是询问你：是否使用 class 类风格的组件？
+
+这个是依托于 Vue 官方团队维护的一个库：vue-class-component
+
+https://github.com/vuejs/vue-class-component
+
+> 准确来说，他不是库，而是 装饰器。
+
+提供类似 `@Compoent`、`@props`、`@watch` 这样的简写装饰字符，用于在 TypeScript 中定义 组件 和 参数。
+
+```
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+@Component
+export default class HelloWorld extends Vue {
+  @Prop() private msg!: string;
+}
+</script>
+```
+
+> 在上面的代码中 `@Component` 你可以简单理解为，相当于 React 中：`React.FC<xxx>` 的简写形式
+
+<br>
+
+关于这些简写(装饰)字符的具体用法，可参考其官方API：
+
+https://class-component.vuejs.org/
+
+> 我个人非常不习惯这种方式，这是一个 Vue 框架下的自己特有的 “发明”，相当于 语法糖。
+
+所以这里一步我会选择 N。
+
+
+
+<br>
+
+接下来还会出现这样一个选择：
+
+Use Babel alongside TypeScript(required for modern mode,auto-detected polyfills,transpiling JSX)?
+
+这句话是询问你：是否使用 Babel + TypeScript  的语法提示和代码补全？
+
+所以我们肯定选择 Y。
+
+
+
+<br>
+
+当我们选择安装 TypeScript 后，关于选择哪种格式化代码方式时，会新增一个选项：TSLint
+
+请注意：不推荐选择 TSLint。
+
+因为连 TSLint 官方都已经废弃了它，所以不要选择这一项。
+
+
+
+<br>
+
+**关于 TypeScript 的版本说明：**
+
+默认目前最新的 Vue CLI 中设定 TypeScript 的版本为 `~4.1.5`，也就是说最多会使用 4.1.99 这个版本。
+
+而目前实际 TS 最新版本为 4.3.x，所以我会选择手工修改版本号，改为 "^4.1.5"，以便可以安装到最新的版本。
+
+> 记得重新执行一下 `yarn add typescript`
+
+
+
+<br>
+
+**关于 eslint 的补充说明：**
 
 如果你选择手工选择特性，并且选择使用 eslint ，当项目创建完成后，你需要手工修改 .eslintrc.js
 
@@ -152,7 +251,6 @@ module.exports = {
 ```
 vue serve
 ```
-
 
 <br>
 
